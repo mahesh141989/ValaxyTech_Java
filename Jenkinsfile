@@ -3,23 +3,11 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn clean install'
+	        echo "Hello Maven"
+                sh 'mvn --version'
             }
         }
-        stage('Test') {
-            steps {
-                sh 'mvn test'
-            }
-            post {
-                always {
-                    junit 'target/surefire-reports/*.xml'
-                }
             }
         }
-        stage('war build') {
-            steps {
-                sh 'mvn package'
-            }
-        }
-    }
-}
+
+
